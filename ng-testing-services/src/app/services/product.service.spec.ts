@@ -1,9 +1,10 @@
 import { TestBed } from "@angular/core/testing";
 import { ProductsService } from "./product.service";
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { Product } from "../models/product.model";
 import { environment } from "src/environments/environment";
 import { generateManyProducts } from "../models/product.mock";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 
 fdescribe('ProductService', ()=>{
@@ -12,11 +13,13 @@ fdescribe('ProductService', ()=>{
 
   beforeEach(()=>{
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers:[
-        ProductsService
-      ]
-    });
+    imports: [],
+    providers: [
+        ProductsService,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
     productService = TestBed.inject(ProductsService);
     httpcontroller = TestBed.inject(HttpTestingController);
   });
