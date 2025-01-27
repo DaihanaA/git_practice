@@ -7,7 +7,7 @@ import { generateManyProducts } from "../models/product.mock";
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 
-fdescribe('ProductService', ()=>{
+describe('ProductService', ()=>{
   let productService: ProductsService;
   let httpcontroller: HttpTestingController;
 
