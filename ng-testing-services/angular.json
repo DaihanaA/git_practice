@@ -74,27 +74,28 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "ng-testing-services:build"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "ng-testing-services:build:production"
+              "buildTarget": "ng-testing-services:build:production"
             },
             "development": {
-              "browserTarget": "ng-testing-services:build:development"
+              "buildTarget": "ng-testing-services:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "ng-testing-services:build"
-          }
-        },
+
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
@@ -110,6 +111,6 @@
         }
       }
     }
-  },
-  "defaultProject": "ng-testing-services"
+  }
+
 }
