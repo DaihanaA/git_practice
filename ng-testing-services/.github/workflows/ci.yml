@@ -2,6 +2,7 @@ name: CI for Angular
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   uni-test:
