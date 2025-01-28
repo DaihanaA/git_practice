@@ -14,10 +14,10 @@ jobs:
       - name: Node Setup
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: 16.x
 
-      - name: Install
+      - name: Install dependencies
         run: npm ci
 
-      - name: Run Tests
+      - name: Run tests
         run: ng test --no-watch --code-coverage --browsers=ChromeHeadlessCI
